@@ -108,15 +108,17 @@ func encoderOfMapKey(ctx *ctx, typ reflect2.Type) ValEncoder {
 		}
 	}
 
-	if typ == textMarshalerType {
-		return &directTextMarshalerEncoder{
-			stringEncoder: ctx.EncoderOf(reflect2.TypeOf("")),
+	if typ.Kind() != reflect.String {
+		if typ == textMarshalerType {
+			return &directTextMarshalerEncoder{
+				stringEncoder: ctx.EncoderOf(reflect2.TypeOf("")),
+			}
 		}
-	}
-	if typ.Implements(textMarshalerType) {
-		return &textMarshalerEncoder{
-			valType:       typ,
-			stringEncoder: ctx.EncoderOf(reflect2.TypeOf("")),
+		if typ.Implements(textMarshalerType) {
+			return &textMarshalerEncoder{
+				valType:       typ,
+				stringEncoder: ctx.EncoderOf(reflect2.TypeOf("")),
+			}
 		}
 	}
 
