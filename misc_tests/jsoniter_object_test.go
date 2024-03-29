@@ -5,10 +5,11 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/json-iterator/go"
-	"github.com/stretchr/testify/require"
 	"strings"
 	"time"
+
+	"github.com/stretchr/testify/require"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 func Test_empty_object(t *testing.T) {

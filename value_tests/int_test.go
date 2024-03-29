@@ -3,10 +3,11 @@ package test
 import (
 	"bytes"
 	"fmt"
-	"github.com/json-iterator/go"
-	"github.com/stretchr/testify/require"
 	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 func init() {

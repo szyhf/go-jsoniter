@@ -8,8 +8,8 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/json-iterator/go"
 	"github.com/modern-go/reflect2"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 const maxUint = ^uint(0)

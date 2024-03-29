@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 func Test_bad_case(t *testing.T) {

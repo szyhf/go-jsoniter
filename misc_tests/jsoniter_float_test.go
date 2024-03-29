@@ -5,8 +5,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 func Test_read_big_float(t *testing.T) {

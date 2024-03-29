@@ -5,8 +5,8 @@ import (
 	"io"
 	"testing"
 
-	"github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
+	"github.com/szyhf/go-jsoniter/v2"
 )
 
 func Test_read_null(t *testing.T) {
