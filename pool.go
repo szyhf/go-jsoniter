@@ -54,5 +54,9 @@ func (cfg *frozenConfig) BorrowIterator(data []byte) *Iterator {
 func (cfg *frozenConfig) ReturnIterator(iter *Iterator) {
 	iter.Error = nil
 	iter.Attachment = nil
+	// 设置一个强限制避免对象池持有缓冲区过大的对象
+	if cap(iter.buf) > 64*1024 {
+		return
+	}
 	cfg.iteratorPool.Put(iter)
 }
