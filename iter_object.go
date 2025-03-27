@@ -220,18 +220,22 @@ func (iter *Iterator) ReadMapCB(callback func(*Iterator, string) bool) bool {
 
 func (iter *Iterator) readObjectStart() bool {
 	c := iter.nextToken()
-	if c == '{' {
+	switch c {
+	case '{':
 		c = iter.nextToken()
 		if c == '}' {
 			return false
 		}
 		iter.unreadByte()
 		return true
-	} else if c == 'n' {
+	case 'n':
 		iter.skipThreeBytes('u', 'l', 'l')
 		return false
+	case 0:
+		iter.ReportError("readObjectStart", "expect { or n, but found \"\"")
+		return false
 	}
-	iter.ReportError("readObjectStart", "expect { or n, but found "+string([]byte{c}))
+	iter.ReportError("readObjectStart", "expect { or n, but found \""+string([]byte{c})+"\"")
 	return false
 }
 
